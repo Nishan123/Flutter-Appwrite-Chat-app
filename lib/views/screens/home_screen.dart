@@ -10,7 +10,9 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         elevation: 0,
         backgroundColor: primaryColor,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, "/search");
+        },
         child: Icon(
           Icons.add,
           color: secondaryColor,
@@ -24,12 +26,24 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, "/profile");
+            },
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              height: 30,
+              width: 30,
+              decoration: BoxDecoration(
+                color: primaryColor,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
                 Icons.person_rounded,
-                size: 30,
-              ))
+                color: Colors.white,
+              ),
+            ),
+          )
         ],
       ),
       body: ListView.builder(itemBuilder: (context, index) {

@@ -5,11 +5,16 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String text;
   final Color textColor;
+  final Icon? icon;
+  final Color? iconColor;
   const CustomButton({
     super.key,
     required this.backgroundColor,
     required this.onPressed,
-    required this.text, required this.textColor,
+    required this.text,
+    required this.textColor,
+    this.icon,
+    this.iconColor,
   });
 
   @override
@@ -26,11 +31,21 @@ class CustomButton extends StatelessWidget {
           elevation: 0,
           backgroundColor: backgroundColor,
         ),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: textColor,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (icon != null)
+              Icon(
+                icon!.icon,
+                color: iconColor,
+              ),
+            Text(
+              text,
+              style: TextStyle(
+                color: textColor,
+              ),
+            ),
+          ],
         ),
       ),
     );
